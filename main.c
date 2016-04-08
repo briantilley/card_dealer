@@ -102,7 +102,8 @@ void printPairs(int hand[], size_t sizeHand)
 			}
 			else if(hand[i] % 13 == hand[j] % 13)
 			{
-				printf("You have a pair of %ss!\n", valueNames[hand[i] % 13]);
+				// print an 'e' after value name "Six"
+				printf("You have a pair of %s%cs!\n", valueNames[hand[i] % 13], (hand[i] % 13 == 5) ? 'e' : '\0');
 			}
 		}
 	}
@@ -120,6 +121,7 @@ int main(int argc, char* argv[])
 	shuffleDeck(deck, SIZE_DECK, 20);
 
 	// print the entire deck in 2 columns
+	printf("deck:\n\n");
 	for(int i = 0; i < SIZE_DECK / 2; i++)
 	{
 		printCard(deck[i]);
@@ -129,7 +131,8 @@ int main(int argc, char* argv[])
 	}
 
 	// deal i hands, print the cards' names, and print pairs
-	for(int i = 0; i < 1; i++)
+	printf("\nhands dealt:\n\n");
+	for(int i = 0; i < 5; i++)
 	{
 		deal(hand, SIZE_HAND, deck, SIZE_DECK, &cardsDealt);
 		for(int j = 0; j < SIZE_HAND; j++)
